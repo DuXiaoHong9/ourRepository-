@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+"-//Apache Struts//XWork Validator 1.0.2//EN" 
+"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="user.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="tetname.null" />
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10</param>
+			<param name="minLength">3</param>
+			<message key="tetname.length" />
+		</field-validator>
+	</field>
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="tetpassword.null" />
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">3</param>
+			<message key="tetpassword.null" />
+		</field-validator>
+	</field>
+	<field name="repassword">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="tetrepassword.null" />
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">user.password==repassword</param>
+			<message key="tetrepassword.same" />
+		</field-validator>
+	</field>
+	<field name="user.telephone">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="tetphone.null" />
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex">((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)</param>
+			<message key="tetphone.regex" />
+		</field-validator>
+	</field>
+	<field name="user.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="tetusername.null" />
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">4</param>
+			<param name="minLength">2</param>
+			<message key="tetusername.length" />
+		</field-validator>
+	</field>
+</validators>

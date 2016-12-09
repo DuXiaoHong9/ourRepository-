@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd"> 
+<struts>
+	<constant name="struts.custom.i18n.resources" value="message"></constant><!-- 修改默认的错误信息提示文本 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant><!-- 乱码 -->
+	<constant name="struts.ui.theme" value="simple"></constant><!-- struts标签的美化 -->
+	<!-- 创建一个default继承struts2的struts-default包 -->
+	<package name="default" namespace="/" extends="struts-default" >
+		<interceptors>
+			<!-- 定义拦截器 -->
+			<interceptor name="MyTimer" class="struts.MyTimerInterceptor"></interceptor>
+		</interceptors>
+		
+		<action name="SLoginAction" class="struts.LoginAction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="Sregister" class="struts.registerAuction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">regs.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="guanli" class="struts.guanliAuction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="fabu" class="struts.fabuAuction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">fabu.jsp</result>
+			<result name="login">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="update" class="struts.updateAuction">
+			<result name="success">fabu.jsp</result>
+			<result name="login">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="delete" class="struts.deleteAuction">
+			<result name="success">guanli.jsp</result>
+			<result name="input">guanli.jsp</result>
+			<result name="login">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="exit" class="struts.exitAuction">
+			<result name="success" type="redirect" >login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="houView" class="struts.houseViewAuction">
+			<result name="success">details.jsp</result>
+			<result name="login">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="info" class="struts.infoAuction">
+			<result name="success">fabu.jsp</result>
+			<result name="login">login.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="list" class="struts.listAuction">
+			<result name="success">list.jsp</result>
+			<result name="input">list.jsp</result>
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="regsCheckName" class="struts.regsCheckName">
+			<interceptor-ref name="MyTimer"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>	
+</struts>

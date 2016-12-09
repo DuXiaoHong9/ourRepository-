@@ -1,0 +1,40 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>				<!--定义session工厂-->
+		<!-- 数据库URL -->
+		<property name="connection.url">
+			jdbc:oracle:thin:@127.0.0.1:1521:orcl
+		</property>
+		<!-- 用户名 -->
+		<property name="connection.username">
+			user1
+		</property>
+		<!-- 密码 -->
+		<property name="connection.password">
+			user1
+		</property>
+		<!-- 数据库类型 -->
+		<property name="dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<!-- 驱动 -->
+		<property name="connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+<!-- 		<property name="show_sql">true</property> -->
+<!-- 		<property name="format_sql">true</property> -->
+		<mapping resource="entity/street.hbm.xml"/>
+		<mapping resource="entity/users.hbm.xml"/>
+		<mapping resource="entity/house.hbm.xml"/>
+		<mapping resource="entity/district.hbm.xml"/>
+		<mapping resource="entity/types.hbm.xml"/>
+<!-- 		<mapping class="entity/district"/> -->
+<!-- 		<mapping class="entity/house"/> -->
+<!-- 		<mapping class="entity/street"/> -->
+<!-- 		<mapping class="entity/types"/> -->
+<!-- 		<mapping class="entity/users"/> -->
+	</session-factory>
+</hibernate-configuration>
