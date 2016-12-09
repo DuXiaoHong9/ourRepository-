@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+	<class name="entity.street" table="STREET" lazy="false" >
+		<id name="id" type="java.lang.Short" column="ID" >
+			<generator class="sequence">
+				<param name="sequence">house_street_id</param>
+			</generator>
+		</id>
+		<property name="name" type="java.lang.String" column="NAME"></property>
+		
+		<!--  <property name="district_id" type="java.lang.Byte" column="DISTRICT_ID"></property>  -->
+		
+		<many-to-one 
+			name="dis"
+			column="DISTRICT_ID"
+			class="entity.district"
+		/>
+		
+		<set name="houses" lazy="false">
+            <key>
+                <column name="STREET_ID"/>
+            </key>
+            <one-to-many class="entity.house" />
+        </set>
+		
+	</class>
+</hibernate-mapping>

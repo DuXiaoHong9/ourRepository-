@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+	<class name="entity.users" table="USERS" lazy="false">
+		<id name="id" type="java.lang.Short" column="ID">
+			<generator class="sequence">
+				<param name="sequence">house_users_id</param>
+			</generator>
+		</id>
+		<property name="name" type="java.lang.String" column="NAME"></property>
+		<property name="password" type="java.lang.String" column="PASSWORD"></property>
+		<property name="telephone" type="java.lang.String" column="TELEPHONE"></property>
+		<property name="username" type="java.lang.String" column="USERNAME"></property>
+		<property name="isadmin" type="java.lang.String" column="ISADMIN"></property>
+		
+		<set name="houses" lazy="false">
+            <key>
+                <column name="USER_ID"/>
+            </key>
+            <one-to-many class="entity.house" />
+        </set>
+		
+	</class>
+<!-- 	命名HQL查询 -->
+	<query name="HQLUserLogin">
+		<![CDATA[
+			from users as user where user.name = ? and user.password = ?
+		]]>
+    </query> 
+<!--     命名原生SQL -->
+	<sql-query name="SQLUserLogin">
+		<return  alias="u" class="entity.users"></return>
+		<!--return-join用于持久化类之间的连接 alias用于指定别名 property用于指定属性名称   -->
+<!-- 		<return-join alias="d" property="e.dept"></return-join> -->
+		select * from USERS u where u.NAME = ? and u.PASSWORD = ?
+	</sql-query>
+</hibernate-mapping>
