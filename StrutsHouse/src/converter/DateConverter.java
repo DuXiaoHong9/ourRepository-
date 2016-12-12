@@ -28,6 +28,7 @@ public class DateConverter extends StrutsTypeConverter{
 		String datestr = values[0];
 		for (int i = 0; i < dfs.length; i++) {
 			try {
+				System.out.println(123);
 				return dfs[i].parse(datestr);
 			} catch (Exception e) {
 				continue;
